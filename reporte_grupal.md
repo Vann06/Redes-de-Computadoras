@@ -20,10 +20,10 @@
 | Integrante 2 | Ricardo Arturo Godínez Sánchez | 23247 |
 | Integrante 3 | Diego Javier Lopez Reinoso     | 23747|
 ---
-Integrantes del otro grupo 
+Integrantes del otro grupo #17
 | Rol | Nombre completo | Carnet |
 |---|---|---|
-| Integrante 1 | Roberto  | 23201 |
+| Integrante 1 | Roberto Barreda| 23354 |
 | Integrante 2 | Angel Esquit | 23247 |
 ---
 
@@ -107,10 +107,11 @@ Algunas dificultades que podemos encontrar en los mensajes empaquetados es que s
 
 | Participante | Rol asignado | Identificador utilizado |
 |---|---|---|
-| [Nombre] | Cliente 1 | [C1 / nombre / número] |
-| [Nombre] | Cliente 2 | [C2 / nombre / número] |
-| [Nombre] | Cliente 3 | [C3 / nombre / número] |
-| [Nombre] | Conmutador | [SW1 / nombre] |
+| Vianka Castro | Cliente 1 | C1 – Vianka |
+| Ricardo Godinez | Cliente 2 | C2 – Ricardo |
+| Ángel Esquit | Cliente 3 | C3 – Ángel |
+| Roberto Barreda | Cliente 4 | C4 – Roberto |
+| Diego López | Conmutador | SW1 – Diego |
 
 #### Topología utilizada
 
@@ -131,23 +132,13 @@ Algunas dificultades que podemos encontrar en los mensajes empaquetados es que s
 
 ### ¿Qué posibilidades incluye la introducción de un conmutador en el sistema?
 
-[Analice aspectos como la comunicación indirecta, el control del tráfico, el reenvío de mensajes, la administración de destinos, la creación de rutas y la posibilidad de conectar más usuarios.]
+Incluir un conmutador puede agregar un factor de privacidad y seguridad del contenido del mensaje. Sin este conmutador, probablemente el mensaje sería público y el receptor no tendría lo que busca transmitir el emisor directamente. Al mismo tiempo, dependiendo de cómo se maneja esto puede agregar dificultad en la velocidad que se transmiten los mensajes, si no existe una forma de ordenar prioridades puede que el tiempo de llegada del mensaje no sea igual para todos. 
 
-### ¿Qué ventajas se obtienen al agregar más conmutadores?
+### ¿Qué ventajas y desventajas se obtienen al agregar más conmutadores?
 
-- [Ventaja 1]
-- [Ventaja 2]
-- [Ventaja 3]
+Ventajas: Integrar una mayor cantidad de conmutadores puede agregar un nivel de redundancia y múltiples rutas alternativas para la información. Sin estos equipos adicionales, probablemente un fallo en un punto detendría toda la comunicación, pero al tenerlos, el mensaje tiene más opciones para llegar directamente al receptor. Además, facilita expandir la red para soportar a más emisores de manera simultánea.
+Desventajas: Al mismo tiempo, dependiendo de cómo se maneja este volumen de equipos, puede agregar retrasos en la velocidad a la que se transmiten los mensajes. Si la información debe dar demasiados saltos entre distintos conmutadores y no existe una forma eficiente de calcular la ruta más corta, puede que el tiempo de llegada se vea afectado, sumando latencia general al sistema.
 
-### ¿Qué desventajas se presentan al agregar más conmutadores?
-
-- [Desventaja 1]
-- [Desventaja 2]
-- [Desventaja 3]
-
-### Análisis general
-
-[Explique cómo cambia la complejidad, el tiempo de entrega, la posibilidad de fallos, la escalabilidad y la administración de la red al agregar más conmutadores.]
 
 ---
 
@@ -155,30 +146,23 @@ Algunas dificultades que podemos encontrar en los mensajes empaquetados es que s
 
 ![Distribución de participantes](img/dos_grupos.png)
 
-**Descripción:** [Indique qué se observa.]
+Respuestas
+1. ¿Qué esquema (código) fue más fácil de transmitir y por qué?
+El esquema más fácil fue Morse, porque era más lento y más identificable cada sonido. Se daba de forma mucho más intuitiva debido a que la clave con la que se interpreta es fácil de leer.
 
-![Mensajes enviados al conmutador](evidencias/grupal/conmutacion_02.png)
+2. ¿Qué esquema (código) fue más difícil de transmitir y por qué?
+El método más complicado fue el código Baudot, ya que era nuevo para nosotros y no contábamos con suficiente orientación sobre cómo sonaba o se representaba cada carácter. Esto hizo que identificar las letras y descifrar los mensajes fuera más difícil.
 
-**Descripción:** [Indique qué se observa.]
+3. ¿Qué esquema tuvo menos errores? (Incluir datos que lo evidencien)
+Aunque no fue perfecto, pero más acertado que Baudot, Morse fue el que tuvo menos errores. Aproximando de forma fácil, un 80% del mensaje era reconocible.
+![alt text](img/image2.png)
 
-![Mensaje reenviado al receptor](evidencias/grupal/conmutacion_03.png)
+4. ¿Qué dificultades involucra enviar un mensaje de forma "empaquetada"?
+Es difícil porque afecta la calidad humana. Tipo, el receptor no puede pedir que se repita un pulso en duda, sino que debe volver a reproducir la grabación y escuchar con mucho cuidado en caso de que algo no se escuche bien. Además, la compresión de audio también afecta a pulsos cortos haciéndolos difíciles de escuchar o que no se escuche
+5. ¿Qué posibilidades incluye la introducción de un conmutador en el sistema?
+Incluir un conmutador puede agregar un factor de privacidad y seguridad del contenido del mensaje. Sin este conmutador, probablemente el mensaje sería público y el receptor no tendría lo que busca transmitir el emisor directamente. Al mismo tiempo, dependiendo de cómo se maneja esto puede agregar dificultad en la velocidad que se transmiten los mensajes, si no existe una forma de ordenar prioridades puede que el tiempo de llegada del mensaje no sea igual para todos. 
 
-**Descripción:** [Indique qué se observa.]
+## 7. Método de Protocolo
 
----
-
-## 7. Discusión grupal
-
-[Describa la experiencia del grupo durante la actividad. Incluya los principales problemas encontrados, las diferencias entre la comunicación directa y la comunicación mediante un conmutador, y los aprendizajes obtenidos.]
-
----
-
-## 8. Conclusiones
-
-1. [Conclusión relacionada con los códigos Morse y Baudot.]
-2. [Conclusión relacionada con los errores de transmisión.]
-3. [Conclusión relacionada con los mensajes empaquetados.]
-4. [Conclusión relacionada con el funcionamiento del conmutador.]
-5. [Conclusión general del laboratorio.]
-
+Lo que hicimos para comunicarnos por medio del conmutador fue primero establecer una llamada a este, los integrantes del grupo enviamos un mensaje al conmutador, cuando este nos respondía es que estaba libre. Luego enviamos el mensaje y por medio de caracteres el destinatario. Así el conmutador no mostró sobrecarga. En la pérdida de información lo que se hizo fue que se enviaba el símbolo de una x al conmutador para establecer que habia un fallo o pérdida de ese mensaje por lo que se volvía a enviar.
 ---
