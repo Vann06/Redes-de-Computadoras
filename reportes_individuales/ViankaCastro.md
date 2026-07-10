@@ -1,4 +1,5 @@
 # Reporte Individual – Laboratorio 1  
+
 ## Introducción a Wireshark
 
 ---
@@ -7,7 +8,7 @@
 
 | Campo | Información |
 |---|---|
-| Nombre completo | Vianka Castro|
+| Nombre  | Vianka Castro|
 | Carnet | 23201|
 | Curso | Redes de Computadoras |
 | Laboratorio | Laboratorio 1 |
@@ -140,7 +141,11 @@ Adaptador de LAN inalámbrica Wi-Fi:
 
 ![Configuración del ring buffer](evidencias/individual_1/09_ring_buffer_config.png)
 
+![Configuración del ring buffer](evidencias/individual_1/10_ring_buffer_com.png)
 
+```bash
+ & "C:\Program Files\Wireshark\tshark.exe" -i 5 -b filesize:5120 -b files:10 -w "C:\Users\viank\OneDrive\Desktop\
+ ```
 ---
 
 ## 6. Análisis de paquetes HTTP
@@ -160,7 +165,9 @@ Adaptador de LAN inalámbrica Wi-Fi:
 http
 ```
 
-![Tráfico HTTP identificado](evidencias/individual_1/12_http_general.png)
+![Tráfico HTTP identificado](evidencias/individual_1/11_http_general.png)
+
+![Tráfico HTTP identificado](evidencias/individual_1/12_http_filtrado.png)
 
 ---
 
@@ -172,51 +179,61 @@ http
 
 #### a. ¿Qué versión de HTTP está ejecutando el navegador?
 
-**Respuesta:** [HTTP/1.0, HTTP/1.1, HTTP/2 u otra]
+**Respuesta:**
+ HTTP/1.1
 
 **Evidencia y explicación:**  
-[Indique el campo o línea del paquete donde encontró la versión.]
+En la línea morada seleccionada dice: GET /wireshark-labs/INTRO-wireshark-file1.html HTTP/1.1\r\n
+
+Fue detectado en el encabezado de la peticiónde cliente GET 
 
 ---
 
 #### c. ¿Qué lenguajes indica el navegador que acepta?
 
-**Respuesta:** [Ejemplo: es-ES, es, en-US, en]
+**Respuesta:**
+Por lo que veo tiene varias 
+- Español Lationamericano
+- Español Estándar
+- Español de España
+- Inglés 
 
 **Campo analizado:** `Accept-Language`
 
-![Accept-Language](evidencias/individual_1/14_accept_language.png)
+![Accept-Language](evidencias/individual_1/13_accept_language.png)
 
-**Explicación:**  
-[Explique qué significan los valores observados.]
+Esto lo que hace es indicar preferencia por español según la configuración local de las variables del navegador 
 
 ---
 
 ### 6.3 Respuesta HTTP del servidor
 
-**Paquete número:** [Número]
+**Paquete número:** 881
 
-![Respuesta HTTP](evidencias/individual_1/15_http_response.png)
+![Respuesta HTTP](evidencias/individual_1/14_http_response.png)
 
 #### b. ¿Qué versión de HTTP está ejecutando el servidor?
 
-**Respuesta:** [Versión]
+**Respuesta:** 
+HTTP/1.1 
 
-**Evidencia y explicación:**  
-[Indique la línea de estado observada.]
+Fue encontrada en el estado de la respuesta del servidor 200 OK 
 
 ---
 
 #### d. ¿Cuántos bytes de contenido fueron devueltos por el servidor?
 
-**Respuesta:** [Cantidad] bytes
+**Respuesta:** 81 bytes
 
 **Campo analizado:** `Content-Length`
 
-![Content-Length](evidencias/individual_1/16_content_length.png)
+![Content-Length](evidencias/individual_1/15_content_length.png)
 
-**Explicación:**  
-[Explique la diferencia, si aplica, entre el tamaño total del paquete y el contenido HTTP.]
+### Diferencia entre Tamaño Total del Paquete y Contenido HTTP
+
+*   **Contenido HTTP (Carga útil / Payload):** Es la información neta solicitada o devuelta por la aplicación (en la respuesta del servidor, equivale estrictamente a los 81 bytes del archivo HTML puro).
+*   **Tamaño Total del Paquete (Trama / Frame):** Representa el volumen total de bits transmitidos por el medio físico. Incluye los 81 bytes del HTML más el sobrecosto (*overhead*) de todas las cabeceras de la pila de protocolos debido al encapsulamiento: la cabecera HTTP, la cabecera TCP (capa 4), la cabecera IP (capa 3) y la cabecera de la trama Wi-Fi/Ethernet (capa 2).
+
 
 ---
 
@@ -224,35 +241,21 @@ http
 
 #### e. Si existiera un problema de rendimiento durante la descarga, ¿en qué elementos de la red convendría escuchar los paquetes?
 
-[Analice, como mínimo, los siguientes puntos:]
+Se debería de escuchar en tres lugares clave: 
+- Host del cliente (navegador) para ver la solicitud y la respuesta.
+- gateway/router local 
+- interfaz de red del propio server 
 
-- Equipo cliente.
-- Puerta de enlace o router local.
-- Enlace entre redes.
-- Firewall o proxy.
-- Balanceador de carga, si existe.
-- Servidor de destino.
-- Puntos antes y después del elemento sospechoso.
+Estos tres puntos nos permiten deducir si el retraso ocurre en mi propia red, durante el viaje por los routers o en el procesamiento interno del server. 
 
 #### ¿Es conveniente instalar Wireshark directamente en el servidor?
 
-**Respuesta:** [Sí / No / Depende]
+**Respuesta:** NO
 
-**Justificación:**  
-[Explique los beneficios y riesgos. Puede mencionar consumo de recursos, permisos, seguridad, volumen de tráfico y alternativas como capturas remotas, port mirroring o TAP de red.]
+No creo que sea conveniente ya que podría afectar el rendimiento del servidor y representaría un riesgo de seguridad. 
+Wireshark consume mucha memoria y CPU para dichos análisis y reconstrucción de paquetes. Si se coloca ahí puede emeporar el rendimiento o causar caída del server. 
 
----
-
-## 7. Resumen de respuestas
-
-| Pregunta | Respuesta |
-|---|---|
-| Versión HTTP del navegador | [Respuesta] |
-| Versión HTTP del servidor | [Respuesta] |
-| Lenguajes aceptados | [Respuesta] |
-| Bytes devueltos | [Respuesta] |
-| Mejor punto de captura | [Respuesta resumida] |
-| ¿Instalar Wireshark en el servidor? | [Respuesta resumida] |
+Una opción mejor sería usar una herramienta nativa como linux o tshark. 
 
 ---
 
@@ -260,43 +263,26 @@ http
 
 ### 8.1 Experiencia en la primera parte
 
-[Comente su experiencia con los códigos Morse y Baudot, la transmisión empaquetada y la conmutación de mensajes.]
+Fue un poco frustante la primera parte en equipo ya que estábamos muy desenfocados en lo que realmente se quería alcanzar en la práctica. Unos iban muy rapido en sus mensajes y no lograba alcanzar analizar o alcanzar un mensaje completamente correcto. Al final me pareció una bonita actividad mas sin embargo nos hizo falta una mejor implementación y organización. 
 
 ### 8.2 Experiencia con Wireshark
 
-[Describa qué partes fueron fáciles, cuáles fueron difíciles y qué funciones de Wireshark le parecieron más útiles.]
+Con la segunda parte me perdía en algunas secciones, me hubiera gustado tener algún tipo de screenshots que me guiaran un poco mejor en los pasos a seguir pero al final logré entender la mayoría de los pasos y me pareció una herramienta muy útil para analizar el tráfico de red. Me gustaría explorar más sobre filtros y análisis de protocolos en futuras prácticas.
 
 ### 8.3 Hallazgos principales
 
-- [Hallazgo 1]
-- [Hallazgo 2]
-- [Hallazgo 3]
-- [Hallazgo 4]
-
-### 8.4 Problemas encontrados y solución aplicada
-
-| Problema | Posible causa | Solución aplicada | Resultado |
-|---|---|---|---|
-| [Problema] | [Causa] | [Solución] | [Resultado] |
-| [Problema] | [Causa] | [Solución] | [Resultado] |
+- El sistema de colores es muy útil para identificar distintos filtros 
+- El poder realizarlo por medio de comandos me parece más fácil 
+- Wireshark puede considerarse un progama que utiliza muchos recursos y hay que tomarlo en cuenta en futuros proyectos. 
 
 ### 8.5 Aprendizaje obtenido
 
-[Explique qué aprendió sobre paquetes, protocolos, interfaces, filtros, capturas y análisis de tráfico.]
+Durante este laboratorio logré comprender mejor cómo funciona la captura de paquetes y cómo se puede analizar el tráfico de red utilizando Wireshark. Aprendí más que nada las bases como el poder configurar perfiles, filtros y reglas de color, así como a interpretar los datos obtenidos de las capturas. Además, logré entender la importancia de la configuración del ring buffer y cómo afecta al rendimiento del análisis.
 
 ---
 
 ## 9. Conclusiones
 
-1. [Conclusión sobre la personalización y uso de Wireshark.]
-2. [Conclusión sobre las interfaces y la configuración de captura.]
-3. [Conclusión sobre el ring buffer.]
-4. [Conclusión sobre el protocolo HTTP.]
-5. [Conclusión general del laboratorio.]
-
----
-
-## 10. Referencias
-
+Para concluir considero que Wireshark es una herramienta poderosa para el análisis de tráfico de red, y su correcta configuración y uso puede proporcionar información valiosa sobre el comportamiento de la red y los protocolos utilizados. La práctica fue muy útil para tener una mini guíabásica sobre todas sus funciones básicas y comprender la importancia de cada elemento en la captura y análisis de paquetes.
 
 ---
