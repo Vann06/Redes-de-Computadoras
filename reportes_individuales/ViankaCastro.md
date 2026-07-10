@@ -7,61 +7,17 @@
 
 | Campo | Información |
 |---|---|
-| Nombre completo | [Nombre del integrante 1] |
-| Carnet | [Carnet integrante 1] |
-| Curso | [Nombre del curso] |
+| Nombre completo | Vianka Castro|
+| Carnet | 23201|
+| Curso | Redes de Computadoras |
 | Laboratorio | Laboratorio 1 |
-| Docente | [Nombre del docente] |
-| Fecha de realización | [DD/MM/AAAA] |
-| Fecha de entrega | [DD/MM/AAAA] |
-| Repositorio de GitHub | [Pegar enlace] |
 
----
-
-## 1. Introducción
-
-[Explique brevemente en qué consistió el laboratorio. Mencione la personalización del entorno de Wireshark, la configuración de una captura mediante ring buffer y el análisis de tráfico HTTP.]
-
----
-
-## 2. Objetivos
-
-- Familiarizarse con el entorno de Wireshark.
-- Personalizar un perfil de trabajo.
-- Configurar columnas, paneles, filtros y reglas de color.
-- Identificar las interfaces de red del equipo.
-- Realizar capturas mediante un ring buffer.
-- Analizar paquetes HTTP reales.
-- Relacionar la teoría de redes con información capturada.
-
----
-
-## 3. Datos del equipo utilizado
-
-| Elemento | Información |
-|---|---|
-| Sistema operativo | [Windows / Linux / macOS] |
-| Versión del sistema | [Versión] |
-| Versión de Wireshark | [Versión] |
-| Tipo de conexión | [WiFi / Ethernet] |
-| Navegador utilizado | [Nombre y versión] |
-| Interfaz de captura | [Nombre de la interfaz] |
-
----
 
 ## 4. Personalización del entorno de Wireshark
 
 ### 4.1 Creación del perfil
 
-**Nombre del perfil:** `[Primer nombre y primer apellido]`
-
-**Procedimiento realizado:**  
-[Explique cómo creó el perfil desde `Edit > Configuration Profiles`.]
-
 ![Perfil creado](evidencias/individual_1/01_perfil.png)
-
-**Descripción de la evidencia:**  
-[Indique dónde se observa el nombre del perfil.]
 
 ---
 
@@ -69,11 +25,8 @@
 
 **Archivo utilizado:** `intro-wireshark-trace1.pcap`
 
-[Explique cómo abrió el archivo y qué información general observó.]
-
 ![Archivo PCAP abierto](evidencias/individual_1/02_archivo_pcap.png)
 
-**Descripción:** [Detalle lo que muestra la captura.]
 
 ---
 
@@ -85,30 +38,15 @@
 
 ![Formato de tiempo](evidencias/individual_1/03_formato_tiempo.png)
 
-**Descripción:** [Indique cómo se evidencia el cambio.]
-
 ---
 
 ### 4.4 Columna de longitud del protocolo
 
-**Nombre asignado a la columna:** [Nombre]
-
-**Tipo de columna seleccionado:** [Tipo]
-
-[Explique cómo agregó la columna y cómo ocultó la columna original de longitud.]
-
 ![Nueva columna](evidencias/individual_1/04_columna_protocolo.png)
-
-**Descripción:** [Explique qué columna se agregó y cuál se ocultó.]
 
 ---
 
 ### 4.5 Diseño de paneles
-
-**Diseño seleccionado:** [Describa el diseño]
-
-**Justificación:**  
-[Explique por qué eligió este diseño y cómo facilita el análisis.]
 
 ![Diseño de paneles](evidencias/individual_1/05_layout.png)
 
@@ -122,13 +60,11 @@
 tcp.flags.syn == 1
 ```
 
-**Color seleccionado:** [Color]
+**Color seleccionado:** [Morado]
 
-[Explique cómo creó la regla desde `View > Coloring Rules`.]
 
 ![Regla de color](evidencias/individual_1/06_regla_color.png)
 
-**Descripción:** [Señale los paquetes resaltados.]
 
 ---
 
@@ -144,19 +80,9 @@ tcp.flags.syn == 1
 
 ![Botón de filtro](evidencias/individual_1/07_boton_filtro.png)
 
-**Descripción:** [Explique cómo se valida que el botón funciona.]
-
 ---
 
 ### 4.8 Interfaces de captura
-
-[Indique cuáles interfaces virtuales ocultó y cuál interfaz dejó habilitada.]
-
-| Interfaz | Tipo | Estado | Razón |
-|---|---|---|---|
-| [Interfaz] | [Física/Virtual] | [Visible/Oculta] | [Explicación] |
-| [Interfaz] | [Física/Virtual] | [Visible/Oculta] | [Explicación] |
-| [Interfaz] | [Física/Virtual] | [Visible/Oculta] | [Explicación] |
 
 ![Lista de interfaces](evidencias/individual_1/08_interfaces.png)
 
@@ -175,24 +101,27 @@ tcp.flags.syn == 1
 **Resultado relevante:**
 
 ```text
-[Pegue únicamente las líneas necesarias. Puede ocultar información sensible.]
+Adaptador de LAN inalámbrica Wi-Fi:
+
+   Sufijo DNS específico para la conexión. . :
+   Dirección IPv6 . . . . . . . . . . : fd79:a21c:d295:b0cc:XXXX:XXXX:XXXX:XXXX
+   Dirección IPv6 temporal. . . . . . : fd79:a21c:d295:b0cc:XXXX:XXXX:XXXX:XXXX
+   Vínculo: dirección IPv6 local. . . : fe80::7cb7:dcab:a836:6a75%8
+   Dirección IPv4. . . . . . . . . . . . . . : 192.168.31.234
+   Máscara de subred . . . . . . . . . . . . : 255.255.255.0
+   Puerta de enlace predeterminada . . . . . : 192.168.31.1
 ```
 
 ### Explicación de lo observado
 
 | Dato | Valor observado | Explicación |
 |---|---|---|
-| Dirección IPv4 | [Valor] | [Explicación] |
-| Máscara de subred | [Valor] | [Explicación] |
-| Puerta de enlace | [Valor] | [Explicación] |
-| Dirección MAC | [Valor] | [Explicación] |
-| Interfaz activa | [Valor] | [Explicación] |
-| Dirección IPv6 | [Valor, si aplica] | [Explicación] |
+| Dirección IPv4 | 192.168.31.234 | Dirección IP privada exclusiva que el router de mi hogar asigna dinámicamente a la computadora dentro de la red local. |
+| Máscara de subred | 255.255.255.0 | Prefijo de red de 24 bits (clase C) que determina que los primeros tres octetos identifican la red local y el último identifica al host. |
+| Puerta de enlace | 192.168.31.1 | Dirección IP local del router que actúa como el nodo o pasarela de salida para dirigir todo el tráfico hacia el internet exterior. |
+| Dirección MAC | Omitida por el sistema (`ipconfig` simple) | Dirección física de hardware de la tarjeta de red; el comando básico `ipconfig` no la despliega a menos que se use el parámetro `/all`. |
+| Interfaz activa | Adaptador de LAN inalámbrica Wi-Fi | Interfaz de red por radiofrecuencia (física) que se encuentra conectada al punto de acceso y que procesa el tráfico de datos del laboratorio. |
 
-![Comando de red](evidencias/individual_1/09_comando_red.png)
-
-**Nota de privacidad:**  
-[Indique si ocultó parcialmente alguna dirección o dato antes de publicar la captura.]
 
 ---
 
@@ -208,33 +137,9 @@ tcp.flags.syn == 1
 
 #### Configuración mediante interfaz gráfica
 
-[Explique los pasos seguidos en Wireshark.]
 
-#### Configuración mediante comando, si aplica
+![Configuración del ring buffer](evidencias/individual_1/09_ring_buffer_config.png)
 
-```bash
-[Pegue aquí el comando utilizado]
-```
-
-![Configuración del ring buffer](evidencias/individual_1/10_ring_buffer_config.png)
-
-**Descripción:** [Explique dónde se observan los valores de 5 MB y 10 archivos.]
-
----
-
-### 5.3 Archivos generados
-
-| No. | Nombre del archivo | Tamaño | Observaciones |
-|---:|---|---:|---|
-| 1 | [Nombre] | [Tamaño] | [Comentario] |
-| 2 | [Nombre] | [Tamaño] | [Comentario] |
-| 3 | [Nombre] | [Tamaño] | [Comentario] |
-| 4 | [Nombre] | [Tamaño] | [Comentario] |
-| 5 | [Nombre] | [Tamaño] | [Comentario] |
-
-![Archivos generados](evidencias/individual_1/11_archivos_ring_buffer.png)
-
-**Descripción:** [Indique cómo se evidencia la rotación de archivos.]
 
 ---
 
